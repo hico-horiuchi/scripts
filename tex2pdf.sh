@@ -12,6 +12,7 @@ then
     if [ -e $NAME.snm ] ; then rm $NAME.snm; fi
     if [ -e $NAME.toc ] ; then rm $NAME.toc; fi
     if [ -e $NAME.vrb ] ; then rm $NAME.vrb; fi
+    "/c/Program Files/Adobe/Reader 11.0/Reader/AcroRd32.exe" $NAME.pdf
 else
     echo $1: No such file or directory
 fi
