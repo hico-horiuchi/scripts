@@ -2,6 +2,7 @@
 if [ -e $1 ]
 then
     NAME=`basename $1 .tex`
+    nkf -w --overwrite $NAME.tex
     platex $NAME.tex
     dvipdfmx $NAME.dvi
     if [ -e $NAME.aux ] ; then rm $NAME.aux; fi
