@@ -1,7 +1,13 @@
 #!/bin/bash
 
-_MEM_TOTAL=`cat /proc/meminfo | grep MemTotal | awk '{print $2;}'`
-_MEM_FREE=`cat /proc/meminfo | grep MemFree | awk '{print $2;}'`
+_MEM_USED=0
 
-_FORM="scale=3; ($_MEM_TOTAL-$_MEM_FREE)/$_MEM_TOTAL*100"
-echo $_FORM | bc | cut -c1-4
+for i in $(ps aux | sed -e 's/  */ /g' | cut -d' ' -f4); do
+    if [ ${i} = '%MEM' ]; then
+        continue
+    fi
+    _FORM="scale=3; $_MEM_USED+$i"
+    _MEM_USED=`echo $_FORM | bc`
+done
+
+echo $_MEM_USED
