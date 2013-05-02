@@ -12,6 +12,11 @@ _FRAME=2
 
 _ACTIVE=`xprop -root | grep '^_NET_ACTIVE_WINDOW' | cut -c43-49`
 _ACTIVE_X=`wmctrl -lG | grep $_ACTIVE | sed -e 's/  */ /g' | cut -d' ' -f3`
+_DESK_W=`wmctrl -lG | grep デスクトップ | sed -e 's/  */ /g' | cut -d' ' -f5`
+
+if [ $_DESK_W -eq $_MON1_W ]; then
+    _MON2_H=$_MON1_H
+fi
 
 if [ $_ACTIVE_X -lt $_MON1_W ]; then
     _MON_W=$_MON1_W
