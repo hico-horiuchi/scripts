@@ -7,7 +7,7 @@ _MON2_W=1920
 _MON2_H=1080
 
 _TASK=25
-_TITLE=24
+_TITLE=25
 _FRAME=2
 
 _ACTIVE=`xprop -root | grep '^_NET_ACTIVE_WINDOW' | cut -c43-49`
