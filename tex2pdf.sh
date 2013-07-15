@@ -5,7 +5,6 @@ then
     nkf -w --overwrite "$NAME.tex"
     platex "$NAME.tex"
     dvipdfmx "$NAME.dvi"
-    if [ -e "$NAME.aux" ] ; then rm "$NAME.aux"; fi
     if [ -e "$NAME.dvi" ] ; then rm "$NAME.dvi"; fi
     if [ -e "$NAME.log" ] ; then rm "$NAME.log"; fi
     if [ -e "$NAME.nav" ] ; then rm "$NAME.nav"; fi
