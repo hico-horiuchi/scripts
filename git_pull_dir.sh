@@ -2,6 +2,8 @@
 # 手抜きgit更新スクリプト | GoingMyWay
 # http://goingmyway.net/?p=632
 
+_GITLOG="git_pull.log"
+
 if [ ! -d $1 ]; then
     echo "$1: No such directory"
     exit 1
@@ -18,6 +20,7 @@ for _DIRS in ${_GITDIRS}; do
     if [ "${_PULL}" != "Already up-to-date." ]; then
         rm -f *.elc
         emacs -batch -f batch-byte-compile *.el
+        echo `date  +"%Y/%m/%d/ %H:%M"` $_DIRS >> ../$_GITLOG
     fi
     cd ../
 done
