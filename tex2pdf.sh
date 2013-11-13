@@ -4,7 +4,7 @@ then
     NAME=`basename "$1" .tex`
     nkf -w --overwrite "$NAME.tex"
     platex "$NAME.tex"
-    dvipdfmx "$NAME.dvi"
+    dvipdfmx -f $HOME/.fonts/kozuka.map "$NAME.dvi"
     if [ -e "$NAME.dvi" ] ; then rm "$NAME.dvi"; fi
     if [ -e "$NAME.log" ] ; then rm "$NAME.log"; fi
     if [ -e "$NAME.nav" ] ; then rm "$NAME.nav"; fi
