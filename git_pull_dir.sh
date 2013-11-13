@@ -20,7 +20,12 @@ for _DIRS in $_GITDIRS; do
     echo -e $_PULL
     if [ "$_PULL" != "Already up-to-date." ]; then
         rm -f *.elc
-        emacs -batch -f batch-byte-compile *.el
+        if [ -e makefile -o -e Makefile ]; then
+            make clean
+            make
+        else
+            emacs -batch -f batch-byte-compile *.el
+        fi
         echo `date  +"%Y/%m/%d/ %H:%M"` $_DIRS >> $_PATH/$_LOG
     fi
     cd $_PATH
