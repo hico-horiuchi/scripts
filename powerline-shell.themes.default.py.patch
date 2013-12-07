@@ -1,0 +1,12 @@
+13,14c13,14
+<     HOME_BG = 31  # blueish
+<     HOME_FG = 15  # white
+---
+>     HOME_BG = 124
+>     HOME_FG = 254
+20,21c20,21
+<     READONLY_BG = 124
+<     READONLY_FG = 254
+---
+>     READONLY_BG = 31  # blueish
+>     READONLY_FG = 15  # white
