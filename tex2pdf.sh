@@ -7,6 +7,7 @@ then
       sed -i 's/\\begin{document}//g' thesis.tex
       sed -i 's/\\maketitle//g' thesis.tex
       sed -i 's/\\end{keyword}/\\end{keyword}\\begin{document}\\maketitle/g' thesis.tex
+      sed -i 's/\.9\\linewidth/\.7\\linewidth/g' thesis.tex
     fi
     platex "$NAME.tex"
     platex "$NAME.tex"
