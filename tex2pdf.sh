@@ -3,16 +3,7 @@ if [ -e "$1" ]
 then
     NAME=`basename "$1" .tex`
     nkf -w --overwrite "$NAME.tex"
-    if [ "$NAME" = 'thesis' ] ; then
-      sed -i 's/\\begin{document}//g' "$NAME.tex"
-      sed -i 's/\\maketitle//g' "$NAME.tex"
-      sed -i 's/\\end{keyword}/\\end{keyword}\\begin{document}\\maketitle/g' "$NAME.tex"
-      sed -i 's/\[htb\]/\[ht\]/g' "$NAME.tex"
-      sed -i 's/\.9\\linewidth/\.7\\linewidth/g' "$NAME.tex"
-      sed -i 's/\.7\\linewidth\]{..\/figure\/class/\.5\\linewidth\]{..\/figure\/class/g' "$NAME.tex"
-      sed -i 's/\.7\\linewidth\]{..\/figure\/expr_r/\.9\\linewidth\]{..\/figure\/expr_r/g' "$NAME.tex"
-      sed -i 's/\(\\includegraphics.*_graph\.eps}\)/\\fbox{\1}/g' "$NAME.tex"
-    fi
+    if [ "$NAME" = 'thesis' ] ; then sh ./thesis.sh ; fi
     platex "$NAME.tex"
     platex "$NAME.tex"
     dvipdfmx -f "$HOME/.fonts/kozuka.map" "$NAME.dvi"
