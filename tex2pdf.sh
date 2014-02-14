@@ -4,6 +4,7 @@ then
     NAME=`basename "$1" .tex`
     nkf -w --overwrite "$NAME.tex"
     if [ "$NAME" = 'thesis' ] ; then sh ./thesis.sh ; fi
+    if [ "$NAME" = 'resume' ] ; then sh ./resume.sh ; fi
     platex "$NAME.tex"
     platex "$NAME.tex"
     dvipdfmx -f "$HOME/.fonts/kozuka.map" "$NAME.dvi"
