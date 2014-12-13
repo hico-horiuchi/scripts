@@ -1,8 +1,6 @@
-#!/bin/bsah
+#!/bin/bash
 # 手抜きgit更新スクリプト | GoingMyWay
 # http://goingmyway.net/?p=632
-
-_LOG="git_pull.log"
 
 if [ ! -d $1 ]; then
     echo "$1: No such directory"
@@ -26,7 +24,6 @@ for _DIRS in $_GITDIRS; do
         else
             emacs -batch -f batch-byte-compile *.el
         fi
-        echo `date  +"%Y/%m/%d/ %H:%M"` $_DIRS >> $_PATH/$_LOG
     fi
     cd $_PATH
 done
