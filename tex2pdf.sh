@@ -1,13 +1,11 @@
 #!/bin/sh
-if [ -e "$1" ]
-then
+
+if [ -e "$1" ]; then
     NAME=`basename "$1" .tex`
-    nkf -w --overwrite "$NAME.tex"
-    if [ "$NAME" = 'thesis' ] ; then sh ./thesis.sh ; fi
-    if [ "$NAME" = 'resume' ] ; then sh ./resume.sh ; fi
     platex "$NAME.tex"
     platex "$NAME.tex"
-    dvipdfmx -f "$HOME/.fonts/kozuka.map" "$NAME.dvi"
+    dvipdfmx "$NAME.dvi"
+    if [ -e "$NAME.aux" ] ; then rm "$NAME.aux"; fi
     if [ -e "$NAME.dvi" ] ; then rm "$NAME.dvi"; fi
     if [ -e "$NAME.log" ] ; then rm "$NAME.log"; fi
     if [ -e "$NAME.nav" ] ; then rm "$NAME.nav"; fi
@@ -15,7 +13,7 @@ then
     if [ -e "$NAME.snm" ] ; then rm "$NAME.snm"; fi
     if [ -e "$NAME.toc" ] ; then rm "$NAME.toc"; fi
     if [ -e "$NAME.vrb" ] ; then rm "$NAME.vrb"; fi
-    if [ -e "$NAME.pdf" ] ; then evince "$NAME.pdf" ; fi
+    if [ -e "$NAME.pdf" ] ; then open "$NAME.pdf"; fi
 else
     echo "$1: No such file or directory"
 fi
