@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ ! -d $1 ]; then
     echo "$1: No such directory"
@@ -9,15 +9,15 @@ _PATH=`readlink -f $1`
 cd $_PATH
 _LISPDIRS=`find . -maxdepth 1 -mindepth 1 -type d`
 
-for _DIRS in ${_LISPDIRS}; do
+for _DIRS in $_LISPDIRS; do
     cd $_DIRS
     if [ -f "Makefile" ]; then
-        cd $PATH
+        cd $_PATH
         continue
     fi
 
-    echo -e "\n-- ${_DIRS} --"
+    echo -e "\n-- $_DIRS --"
     rm -f *.elc
     emacs -batch -f batch-byte-compile *.el
-    cd $PATH
+    cd $_PATH
 done
