@@ -1,10 +1,10 @@
-13,14c13,14
+14,15c14,15
 <     HOME_BG = 31  # blueish
 <     HOME_FG = 15  # white
 ---
 >     HOME_BG = 124
 >     HOME_FG = 254
-20,21c20,21
+21,22c21,22
 <     READONLY_BG = 124
 <     READONLY_FG = 254
 ---
